@@ -3,51 +3,43 @@ package br.com.yaman.quitanda.dao.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 @Entity
 @Table(name = "PRODUTO")
-@SequenceGenerator(name = "ProdutoSeq", sequenceName = "SEQ_COD_PRODUTO")
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
 public class Produto {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProdutoSeq")
-    @Column(name = "COD_PRODUTO")
-    private Integer id;
-	
-    @Column(name = "NOME")
-    private String nome;
-    
-    @ManyToOne
-    @JoinColumn(name = "COD_TIPO_PRODUTO")
-    private TipoProduto tipoProduto;
-    
-    @Column(name = "DESCRICAO")
-    private String descricao;
-    
-    @Column(name = "CALORIAS")
-    private Double calorias;
-    
-    @Column(name = "PESO_MEDIO")
-    private Double pesoMedio;
+	@SequenceGenerator(schema = "QUITANDA", name = "ProdutoSeq", sequenceName = "SEQ_COD_PRODUTO", allocationSize = 1)
+	@GeneratedValue(generator = "ProdutoSeq")
+	@Column(name = "COD_PRODUTO")
+	private Long id;
 
-	public Integer getId() {
+	@Column(name = "NOME")
+	private String nome;
+
+	@ManyToOne
+	@JoinColumn(name = "COD_TIPO_PRODUTO")
+	private TipoProduto tipoProduto;
+
+	@Column(name = "DESCRICAO")
+	private String descricao;
+
+	@Column(name = "CALORIAS")
+	private Double calorias;
+
+	@Column(name = "PESO_MEDIO")
+	private Double pesoMedio;
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -151,7 +143,5 @@ public class Produto {
 		return "Produto [id=" + id + ", nome=" + nome + ", tipoProduto=" + tipoProduto + ", descricao=" + descricao
 				+ ", calorias=" + calorias + ", pesoMedio=" + pesoMedio + "]";
 	}
-    
-    
-	
+
 }

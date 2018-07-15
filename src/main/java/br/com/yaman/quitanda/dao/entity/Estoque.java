@@ -16,13 +16,10 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "ESTOQUE")
-@SequenceGenerator(name = "EstoqueSeq", sequenceName = "SEQ_COD_ESTOQUE")
-//@Data
-//@AllArgsConstructor
-//@NoArgsConstructor
 public class Estoque {
 	
 	@Id
+	@SequenceGenerator(schema = "QUITANDA", name = "EstoqueSeq", sequenceName = "SEQ_COD_ESTOQUE", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "EstoqueSeq")
     @Column(name = "COD_ESTOQUE")
 	private Integer id;
