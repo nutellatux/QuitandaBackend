@@ -16,7 +16,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 	
 	@Override
 	public List<Produto> findAll() {
-		return repository.findAll();
+		return repository.listProdutoOrderByCodigoProduto();
 	}
 
 	@Override
